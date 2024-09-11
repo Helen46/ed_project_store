@@ -1,0 +1,96 @@
+[
+{
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+        "name": "POCO X6 Pro, черный",
+        "description": "",
+        "image": "",
+        "category": 1,
+        "price": 40990.0,
+        "created_at": "2024-09-11T11:29:53.558Z",
+        "updated_at": "2024-09-11T11:29:53.558Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+        "name": "Huawei Pura 70 12/256Gb, ADY-LX9, черный",
+        "description": "",
+        "image": "",
+        "category": 1,
+        "price": 59990.0,
+        "created_at": "2024-09-11T11:30:02.848Z",
+        "updated_at": "2024-09-11T11:30:02.848Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+        "name": "Apple iPhone 15 Pro 256Gb, A3104, белый титан",
+        "description": "",
+        "image": "",
+        "category": 1,
+        "price": 124190.0,
+        "created_at": "2024-09-11T11:30:08.537Z",
+        "updated_at": "2024-09-11T11:30:08.537Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+        "name": "Холодильник GORENJE RK14FPW4, белый",
+        "description": "",
+        "image": "",
+        "category": 2,
+        "price": 28030.0,
+        "created_at": "2024-09-11T11:30:17.824Z",
+        "updated_at": "2024-09-11T11:30:17.824Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+        "name": "Плита электрическая DeLuxe 5004.12, белый",
+        "description": "",
+        "image": "",
+        "category": 2,
+        "price": 17573.0,
+        "created_at": "2024-09-11T11:30:24.954Z",
+        "updated_at": "2024-09-11T11:30:24.954Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 6,
+    "fields": {
+        "name": "Телевизор Haier 32 Smart TV M1",
+        "description": "",
+        "image": "",
+        "category": 2,
+        "price": 14990.0,
+        "created_at": "2024-09-11T11:30:31.292Z",
+        "updated_at": "2024-09-11T11:30:31.292Z"
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+        "name": "смартфон",
+        "description": " мобильный телефон, с сенсорным экраном, дополненный функциональностью умного устройства, фактически всегда оснащён камерой, и также фронтальной камерой, предназначенной для осуществления видеозвонков, видеоконференций и фотографирования селфи."
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+        "name": "крупная бытовая техника",
+        "description": "крупные машины, используемые для повседневных хозяйственных задач, таких как приготовление пищи, стирка или сохранение продуктов питания, и которые, в отличие от сантехники, используют для своей работы электричество или топливо"
+    }
+}
+]
