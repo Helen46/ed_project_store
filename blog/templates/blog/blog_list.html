@@ -1,0 +1,28 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+    <div class="col-12mb-5">
+        <a class="btn btn-primary" href="{% url 'blog:blog_create' %}" role="button">Создать статью</a>
+        {% for object in object_list %}
+            <div class="col-md-4">
+                <div class="card md-4box-shadow">
+                    <div class="card-body">
+                        <p class="card-text>">
+                            {{ object | title }}
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a href="#" type="button"
+                                   class="btn btn-sm btn-outline-secondary">Посмотреть</a>
+                                <a href="#" type="button"
+                                   class="btn btn-sm btn-outline-secondary">Изменить</a>
+                                <a href="#" type="button"
+                                  class="btn btn-sm btn-outline-secondary">Удалить</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
