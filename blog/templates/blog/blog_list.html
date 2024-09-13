@@ -1,10 +1,10 @@
 {% extends 'catalog/base.html' %}
 
 {% block content %}
-    <div class="col-12mb-5">
-        <a class="btn btn-primary" href="{% url 'blog:blog_create' %}" role="button">Создать статью</a>
-        {% for object in object_list %}
+    <div class="col-12 mb-5">
+    <a class="btn btn-primary" href="{% url 'blog:blog_create' %}" role="button">Создать статью</a>
             <div class="col-md-4">
+                {% for object in object_list %}
                 <div class="card md-4box-shadow">
                     <div class="card-body">
                         <p class="card-text>">
@@ -19,10 +19,16 @@
                                 <a href="{% url 'blog:blog_delete' object.pk %}" type="button"
                                   class="btn btn-sm btn-outline-secondary">Удалить</a>
                             </div>
+                            {% if object.is_published %}
+                                <a class="btn btn-warning" href="{% url 'blog:toggle_publish' object.pk %}">Снять с публикации</a>
+                            {% else %}
+                                <a class="btn btn-success" href="{% url 'blog:toggle_publish' object.pk %}">Опубликовать</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
+                 {% endfor %}
             </div>
-        {% endfor %}
+
     </div>
 {% endblock %}
