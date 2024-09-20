@@ -67,3 +67,41 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+
+# продукт,
+# номер версии,
+# название версии,
+# признак текущей версии.
+class Version(models.Model):
+    product = models.ForeignKey(
+        Product,
+        related_name="product_version",
+        on_delete=models.SET_NULL,
+        verbose_name="Продукт",
+        **NULLABLE
+    )
+    number = models.CharField(
+        verbose_name="Номер версии",
+        help_text="Введите номер верси",
+        **NULLABLE
+    )
+    version_name = models.CharField(
+        max_length=150,
+        verbose_name="Название версии",
+        help_text="Введите название верси",
+        **NULLABLE
+    )
+    is_active = models.BooleanField(
+        default=False,
+        verbose_name="Версия активна",
+        **NULLABLE
+    )
+
+    class Meta:
+        verbose_name = "Версия продукта"
+        verbose_name_plural = "Версии продукта"
+        ordering = ["version_name"]
+
+    def __str__(self):
+        return self.version_name

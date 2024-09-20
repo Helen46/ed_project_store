@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from catalog.models import Product
+from catalog.models import Product, Version
 
 
 forbidden_words = [
@@ -22,4 +22,10 @@ class ProductForm(ModelForm):
                 raise forms.ValidationError("В названии содержeтся запрещенное слово")
 
         return cleaned_data
+
+
+class VersionForm(ModelForm):
+    class Meta:
+        model = Version
+        fields = "__all__"
 

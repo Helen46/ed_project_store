@@ -2,13 +2,14 @@
 
 {% block content %}
 <div class="container">
-    <div class="row">
+    <form class="row" method="post" enctype="multipart/form-data">
         <div class="col-6">
-            <form method="post" enctype="multipart/form-data">
                 <div class="card-header">
-                    <h3 class="card-title">
-                        Добпвление товара
-                    </h3>
+                    {% if object %}
+                        <h3 class="card-text">Редектирование товара</h3>
+                    {% else %}
+                        <h3 class="card-text">Добавление товара</h3>
+                    {% endif %}
                 </div>
                 <div class="card-body">
                             {% csrf_token %}
@@ -23,9 +24,19 @@
                         </button>
                     </div>
                 </div>
-            </form>
         </div>
-    </div>
+        <div class="col-6">
+                <div class="card-header">
+                    <h3 class="card-text">Версия товара</h3>
+                </div>
+                <div class="card-body">
+                    {{ formset.management_form }}
+                    {% for form in formset.forms %}
+                        {{ form.as_p }}
+                    {% endfor %}
+                </div>
+        </div>
+    </form>
 </div>
 
 {% endblock %}
