@@ -1,4 +1,4 @@
-from django.forms import ModelForm
+from django.forms import ModelForm, BooleanField
 from django import forms
 from catalog.models import Product, Version
 
@@ -9,7 +9,17 @@ forbidden_words = [
 ]
 
 
-class ProductForm(ModelForm):
+class StileFormMixin:
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            if isinstance(field, BooleanField):
+                field.widget.attrs["class"] = "form-check-input"
+            else:
+                field.widget.attrs["class"] = "form-control"
+
+
+class ProductForm(StileFormMixin, ModelForm):
     class Meta:
         model = Product
         exclude = ("created_at", "updated_at", "slug")
@@ -24,8 +34,7 @@ class ProductForm(ModelForm):
         return cleaned_data
 
 
-class VersionForm(ModelForm):
+class VersionForm(StileFormMixin, ModelForm):
     class Meta:
         model = Version
         fields = "__all__"
-
