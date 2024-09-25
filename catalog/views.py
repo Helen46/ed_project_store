@@ -10,11 +10,6 @@ from catalog.models import Product, Version
 class ProductListView(ListView):
     model = Product
 
-    def get_context_data(self, *args, **kwargs):
-        context_data = super().get_context_data()
-        context_data['product_list'] = Product.objects.filter(product_version__is_active=True)
-        return context_data
-
 
 class ProductDetailView(DetailView):
     model = Product

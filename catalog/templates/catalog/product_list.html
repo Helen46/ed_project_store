@@ -12,7 +12,11 @@
               <p class="card-text">{{ product.name }}</p>
               <p class="card-text">{{ product.price }}</p>
               <p class="card-text">{{ product.description | truncatechars:100 }}</p>
-              <p class="card-text">{{ version.name }}</p>
+              {% for version in product.product_version.all %}
+                {% if version.is_active %}
+                  <p>Версия: {{ version.number }} Название: {{ version.version_name }}</p>
+                {% endif %}
+              {% endfor %}
               <div class="d-flex justify-content-between align-items-center">
                 <div class="d-grid gap-2 d-md-block">
                   <a class="btn btn-primary" href="{% url 'catalog:product_detail' product.pk %}" role="button">Подробнее</a>
