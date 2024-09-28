@@ -9,19 +9,19 @@ from config.settings import CATALOG_DATA
 
 class Command(BaseCommand):
     with connection.cursor() as cursor:
-        cursor.execute(f'TRUNCATE TABLE catalog_category RESTART IDENTITY CASCADE;')
+        cursor.execute(f"TRUNCATE TABLE catalog_category RESTART IDENTITY CASCADE;")
     with connection.cursor() as cursor:
-        cursor.execute(f'TRUNCATE TABLE catalog_product RESTART IDENTITY CASCADE;')
+        cursor.execute(f"TRUNCATE TABLE catalog_product RESTART IDENTITY CASCADE;")
 
     @staticmethod
     def json_read_categories():
-        with open(CATALOG_DATA, encoding='utf-8') as file:
+        with open(CATALOG_DATA, encoding="utf-8") as file:
             catalog = json.load(file)
             return [item for item in catalog if item["model"] == "catalog.category"]
 
     @staticmethod
     def json_read_products():
-        with open(CATALOG_DATA, encoding='utf-8') as file:
+        with open(CATALOG_DATA, encoding="utf-8") as file:
             catalog = json.load(file)
             return [item for item in catalog if item["model"] == "catalog.products"]
 

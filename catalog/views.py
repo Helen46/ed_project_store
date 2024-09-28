@@ -1,7 +1,13 @@
 from django.forms import inlineformset_factory
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView,
+    UpdateView,
+    DeleteView,
+)
 
 from catalog.forms import ProductForm, VersionForm
 from catalog.models import Product, Version
@@ -16,11 +22,11 @@ class ProductDetailView(DetailView):
 
 
 def contacts(request):
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        phone = request.POST.get('phone')
-        message = request.POST.get('message')
-        print (f"{name} {phone} {message}")
+    if request.method == "POST":
+        name = request.POST.get("name")
+        phone = request.POST.get("phone")
+        message = request.POST.get("message")
+        print(f"{name} {phone} {message}")
     return render(request, "contacts.html")
 
 
@@ -39,7 +45,9 @@ class ProductUpdateView(UpdateView):
         context_data = super().get_context_data(**kwargs)
         ProductFormset = inlineformset_factory(Product, Version, VersionForm, extra=1)
         if self.request.method == "POST":
-            context_data["formset"] = ProductFormset(self.request.POST, instance=self.object)
+            context_data["formset"] = ProductFormset(
+                self.request.POST, instance=self.object
+            )
         else:
             context_data["formset"] = ProductFormset(instance=self.object)
 
@@ -54,7 +62,9 @@ class ProductUpdateView(UpdateView):
             formset.save()
             return super().form_valid(form)
         else:
-            return self.render_to_response(self.get_context_data(form=form, formset=formset))
+            return self.render_to_response(
+                self.get_context_data(form=form, formset=formset)
+            )
 
 
 class ProductDeleteView(DeleteView):

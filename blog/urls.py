@@ -3,7 +3,14 @@ from django.conf.urls.static import static
 from django.urls import path
 
 from blog.apps import BlogConfig
-from blog.views import BlogCreateView, BlogListView, BlogDetailView, BlogUpdateView, BlogDeleteView, toggle_publish
+from blog.views import (
+    BlogCreateView,
+    BlogListView,
+    BlogDetailView,
+    BlogUpdateView,
+    BlogDeleteView,
+    toggle_publish,
+)
 
 app_name = BlogConfig.name
 

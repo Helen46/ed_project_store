@@ -1,6 +1,12 @@
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
-from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
+from django.views.generic import (
+    CreateView,
+    ListView,
+    DetailView,
+    UpdateView,
+    DeleteView,
+)
 from pytils.translit import slugify
 
 from blog.models import Blog
@@ -8,7 +14,11 @@ from blog.models import Blog
 
 class BlogCreateView(CreateView):
     model = Blog
-    fields = ("title", "image", "content",)
+    fields = (
+        "title",
+        "image",
+        "content",
+    )
     success_url = reverse_lazy("blog:blog_list")
 
     def form_valid(self, form):
@@ -41,7 +51,11 @@ class BlogDetailView(DetailView):
 
 class BlogUpdateView(UpdateView):
     model = Blog
-    fields = ("title", "image", "content",)
+    fields = (
+        "title",
+        "image",
+        "content",
+    )
     # success_url = reverse_lazy("blog:blog_list")
 
     def form_valid(self, form):
@@ -53,7 +67,7 @@ class BlogUpdateView(UpdateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse('blog:blog_view', args=[self.kwargs.get('pk')] )
+        return reverse("blog:blog_view", args=[self.kwargs.get("pk")])
 
 
 class BlogDeleteView(DeleteView):

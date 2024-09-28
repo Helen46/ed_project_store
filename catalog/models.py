@@ -32,12 +32,10 @@ class Product(models.Model):
         help_text="Введите цену продукта",
     )
     created_at = models.DateTimeField(
-        verbose_name="Дата создания (записи в БД)",
-        auto_now_add=True
+        verbose_name="Дата создания (записи в БД)", auto_now_add=True
     )
     updated_at = models.DateTimeField(
-        verbose_name="Дата последнего изменения (записи в БД)",
-        auto_now=True
+        verbose_name="Дата последнего изменения (записи в БД)", auto_now=True
     )
 
     class Meta:
@@ -79,23 +77,19 @@ class Version(models.Model):
         related_name="product_version",
         on_delete=models.SET_NULL,
         verbose_name="Продукт",
-        **NULLABLE
+        **NULLABLE,
     )
     number = models.CharField(
-        verbose_name="Номер версии",
-        help_text="Введите номер верси",
-        **NULLABLE
+        verbose_name="Номер версии", help_text="Введите номер верси", **NULLABLE
     )
     version_name = models.CharField(
         max_length=150,
         verbose_name="Название версии",
         help_text="Введите название верси",
-        **NULLABLE
+        **NULLABLE,
     )
     is_active = models.BooleanField(
-        default=False,
-        verbose_name="Версия активна",
-        **NULLABLE
+        default=False, verbose_name="Версия активна", **NULLABLE
     )
 
     class Meta:
