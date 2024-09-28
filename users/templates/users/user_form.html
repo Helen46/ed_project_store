@@ -9,7 +9,11 @@
                             {{ form.as_p }}
                     <div class="btn-group col-3" >
                         <button type="submit" class="btn btn-primary" role="button">
-                            Зарегистрироваться
+                            {% if user.is_authenticated %}
+                                Сохранить
+                            {% else %}
+                                Зарегистрироваться
+                            {% endif %}
                         </button>
                     </div>
                 </div>
