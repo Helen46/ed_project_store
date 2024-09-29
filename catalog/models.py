@@ -1,5 +1,7 @@
 from django.db import models
 
+from users.models import User
+
 NULLABLE = {"blank": True, "null": True}
 
 
@@ -38,6 +40,13 @@ class Product(models.Model):
         verbose_name="Дата последнего изменения (записи в БД)", auto_now=True
     )
 
+    owner = models.ForeignKey(
+        User,
+        verbose_name="Владелец",
+        **NULLABLE,
+        on_delete=models.SET_NULL,
+    )
+
     class Meta:
         verbose_name = "Продукт"
         verbose_name_plural = "Продукты"
@@ -67,10 +76,6 @@ class Category(models.Model):
         return self.name
 
 
-# продукт,
-# номер версии,
-# название версии,
-# признак текущей версии.
 class Version(models.Model):
     product = models.ForeignKey(
         Product,
