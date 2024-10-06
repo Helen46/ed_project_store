@@ -1,4 +1,8 @@
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordResetForm
+from django.contrib.auth.forms import (
+    UserCreationForm,
+    UserChangeForm,
+    PasswordResetForm,
+)
 
 from catalog.forms import StileFormMixin
 from users.models import User
@@ -14,10 +18,10 @@ class UserProfileForm(UserChangeForm):
 
     class Meta:
         model = User
-        fields = ("email", "first_name", "last_name", "phon", "avatar")
+        fields = ("email", "first_name", "last_name", "phone", "avatar")
 
 
 class UserRecoveryForm(StileFormMixin, PasswordResetForm):
     class Meta:
         model = User
-        fields = ('email',)
+        fields = ("email",)

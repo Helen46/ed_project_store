@@ -85,7 +85,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 (
-                    "phon",
+                    "phone",
                     models.CharField(
                         blank=True,
                         help_text="Введите ваш номер телефона",

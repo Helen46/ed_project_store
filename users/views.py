@@ -29,7 +29,7 @@ class UserCreateView(CreateView):
             subject="Подтверждение почты",
             message=f"Перейдите по ссылки для подтверждения почты {url}",
             from_email=EMAIL_HOST_USER,
-            recipient_list=[user.email]
+            recipient_list=[user.email],
         )
         return super().form_valid(form)
 
@@ -59,12 +59,12 @@ def make_random_password():
 
 class UserPasswordResetView(PasswordResetView):
     form_class = UserRecoveryForm
-    template_name = 'users/recovery_form.html'
-    success_url = reverse_lazy('users:login')
+    template_name = "users/recovery_form.html"
+    success_url = reverse_lazy("users:login")
 
     def form_valid(self, form):
-        if self.request.method == 'POST':
-            user_email = self.request.POST.get('email')
+        if self.request.method == "POST":
+            user_email = self.request.POST.get("email")
             user = User.objects.filter(email=user_email).first()
             if user:
                 new_password = make_random_password()
@@ -73,8 +73,8 @@ class UserPasswordResetView(PasswordResetView):
                 send_mail(
                     subject="Восстановление пароля",
                     message=f"Здравствуйте! Ваш пароль для доступа на наш сайт изменен:\n"
-                            f"Ваш новый пароль: {new_password}",
+                    f"Ваш новый пароль: {new_password}",
                     from_email=EMAIL_HOST_USER,
-                    recipient_list=[user.email]
+                    recipient_list=[user.email],
                 )
-                return redirect(reverse('users:login'))
+                return redirect(reverse("users:login"))

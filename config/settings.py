@@ -54,7 +54,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "ed_store",
+        "NAME": "my_store",
         "USER": "postgres",
         "PASSWORD": "Qwe123Asd$",
         "HOST": "127.0.0.1",
@@ -100,7 +100,7 @@ AUTH_USER_MODEL = "users.User"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
-EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_HOST = "smtp.yandex.ru"
 EMAIL_PORT = 465
 EMAIL_HOST_USER = "a.priluckay@yandex.ru"
 EMAIL_HOST_PASSWORD = "vrfqakxwivqmvgyz"
