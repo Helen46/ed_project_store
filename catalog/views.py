@@ -13,15 +13,14 @@ from django.views.generic import (
 
 from catalog.forms import ProductForm, VersionForm, ProductModeratorForm
 from catalog.models import Product, Version
+from catalog.services import get_product_from_cache
 
 
 class ProductListView(ListView):
     model = Product
 
     def get_queryset(self, *args, **kwargs):
-        queryset = super().get_queryset(*args, **kwargs)
-        queryset = queryset.filter(is_published=True)
-        return queryset
+        return get_product_from_cache()
 
 
 class ProductDetailView(DetailView):
